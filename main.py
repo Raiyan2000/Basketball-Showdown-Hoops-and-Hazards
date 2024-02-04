@@ -80,7 +80,7 @@ def shoot(x, y):
     screen.blit(basketball_ball, (x + 0, y + 0))  # 16
 
 
-def game_over_text():
+def gameOverText():
     over_text = over_font.render("Game Over!", True, (255, 0, 0))
     screen.blit(over_text, (200, 250))
 
@@ -334,7 +334,7 @@ while game_is_on:
 
     # Gameover by collision
     if gameover == True:
-        game_over_text()
+        gameOverText()
         mixer.music.stop()
         end_sound = mixer.Sound("Graphics/basketball-buzzer.wav")
         end_sound.play()
