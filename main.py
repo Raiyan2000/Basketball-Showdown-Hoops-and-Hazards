@@ -8,19 +8,19 @@ from explosion import *
 from game import Game
 
 # Player
-playerImg = pygame.image.load("basketball-player_50.png")
+playerImg = pygame.image.load("./Graphics/basketball-player_50.png")
 playerX = 480
 playerY = 480
 playerX_change = 0
 playerY_change = 0
 
 # Rim
-b_rim = pygame.image.load("basketball.png")
+b_rim = pygame.image.load("./Graphics/basketball.png")
 rimX = 200
 rimY = 200
 
 # ball
-basketball_ball = pygame.image.load("003-basketball-ball.png")
+basketball_ball = pygame.image.load("./Graphics/003-basketball-ball.png")
 basketballX = 400
 basketballY = 200
 basketballX_change = 1
@@ -28,14 +28,14 @@ basketballY_change = -2
 ballState = "ready"
 
 # plane enemy
-plane = pygame.image.load("airplane.png")
+plane = pygame.image.load("./Graphics/airplane.png")
 planeX = 0
 planeY = 0
 planeX_change = -2
 planeState = "ready"
 
 # nuke enemy
-nuke = pygame.image.load("nuke_64.png")
+nuke = pygame.image.load("./Graphics/nuke_64.png")
 nukeX = 800
 nukeY = 0
 nukeY_change = 2
@@ -82,6 +82,10 @@ def shoot(x, y):
 
 def game_over_text():
     over_text = over_font.render("Game Over!", True, (255, 0, 0))
+    screen.blit(over_text, (200, 250))
+
+def gameWinnerText():
+    over_text = over_font.render("Game Winner!", True, (0, 0, 255))
     screen.blit(over_text, (200, 250))
 
 
@@ -134,15 +138,15 @@ clock = pygame.time.Clock()
 fps = 60
 
 # Game background Image
-background = pygame.image.load("final_court.jpg")
+background = pygame.image.load("./Graphics/final_court.jpg")
 
 # Game running: background sound
-mixer.music.load("background.wav")
+mixer.music.load("./Graphics/background.wav")
 mixer.music.play(-1)
 
 # Game window configuration
 pygame.display.set_caption("Score to 15!")
-icon = pygame.image.load("spaceship.png")
+icon = pygame.image.load("./Graphics/spaceship.png")
 pygame.display.set_icon(icon)
 
 # User interface
@@ -176,7 +180,7 @@ while game_is_on:
         if event.type == pygame.MOUSEBUTTONDOWN:
             if ballState == "ready":
                 ballState == "fire"
-                ball_sound = mixer.Sound("shootBall.wav")
+                ball_sound = mixer.Sound("./Graphics/shootBall.wav")
                 ball_sound.play()
                 basketballX = playerX
                 basketballY = playerY
@@ -205,7 +209,7 @@ while game_is_on:
                 playerY_change = 10
             if event.key == pygame.K_SPACE:
                 if ballState == "ready":
-                    ball_sound = mixer.Sound("shootBall.wav")
+                    ball_sound = mixer.Sound(".Graphics/shootBall.wav")
                     ball_sound.play()
                     basketballX = playerX
                     basketballY = playerY
@@ -262,7 +266,7 @@ while game_is_on:
     # collision of ball and rim
     collision_ball_rim = isCollision(rimX, rimY, basketballX, basketballY)
     if collision_ball_rim:
-        net_sound = mixer.Sound("net_ball.wav")
+        net_sound = mixer.Sound("Graphics/net_ball.wav")
         net_sound.play()
         explosion = Explosion(rimX, rimY)
         explosion_group.add(explosion)
@@ -276,9 +280,9 @@ while game_is_on:
 
     # Game Winner
     if score > 14:
-        game_over_text()
+        gameWinnerText()
         mixer.music.stop()
-        end_sound = mixer.Sound("basketball-buzzer.wav")
+        end_sound = mixer.Sound("Graphics/basketball-buzzer.wav")
         end_sound.play()
         rimX = 5000
         rimY = 500
@@ -290,7 +294,7 @@ while game_is_on:
     if score > 5 and planeState == "ready":
         planeX = 720
         planeY = random.randint(300, 530)
-        plane_sound = mixer.Sound("airplane-fly-over-01.wav")
+        plane_sound = mixer.Sound("Graphics/airplane-fly-over-01.wav")
         plane_sound.play()
         screen.blit(plane, (planeX, planeY))
         planeState = "fire"
@@ -305,7 +309,7 @@ while game_is_on:
     if score > 10 and nukeState == "ready":
         nukeX = random.randint(300, 530)
         nukeY = 0
-        nuke_sound = mixer.Sound("falling.wav")
+        nuke_sound = mixer.Sound("Graphics/falling.wav")
         nuke_sound.play()
         screen.blit(nuke, (nukeX, nukeY))
         nukeState = "fire"
@@ -316,7 +320,7 @@ while game_is_on:
     if nukeY > 550 and nukeState == "fire":
         explosion = Explosion(nukeX, nukeY)
         explosion_group.add(explosion)
-        nuke2_sound = mixer.Sound("Arcade Explo A.wav")
+        nuke2_sound = mixer.Sound("Graphics/Arcade Explo A.wav")
         nuke2_sound.play()
         nukeState = "ready"
 
@@ -332,7 +336,7 @@ while game_is_on:
     if gameover == True:
         game_over_text()
         mixer.music.stop()
-        end_sound = mixer.Sound("basketball-buzzer.wav")
+        end_sound = mixer.Sound("Graphics/basketball-buzzer.wav")
         end_sound.play()
         rimX = 5000
         rimY = 500

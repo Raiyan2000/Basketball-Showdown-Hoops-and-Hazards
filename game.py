@@ -49,7 +49,8 @@ class Game():
         self.UP_KEY, self.DOWN_KEY, self.START_KEY, self.BACK_KEY = False, False, False, False
 
     def draw_text(self, text, size, x, y):
-        font = pygame.font.Font(self.font_name, size)
+        #font = pygame.font.Font(self.font_name, size)
+        font = pygame.font.Font("./Graphics/8-BIT WONDER.TTF", size)
         text_surface = font.render(text, True, self.WHITE)
         text_rect = text_surface.get_rect()
         text_rect.center = (x, y)
