@@ -1,4 +1,4 @@
-# BasketBall Showdown: Hoops & Hazards
+# Basketball Showdown: Hoops & Hazards
 This is an engaging basketball game designed to challenge players to reach a score of 15 points while avoiding obstacles and enemies. Developed using Python and Pygame, this 2-dimensional game offers an immersive experience with intuitive controls and dynamic gameplay elements.
 # Motivation
 1. 📐 Express Projectile Motion Math:
@@ -33,7 +33,7 @@ This is an engaging basketball game designed to challenge players to reach a sco
 
 <strong>Collision Effects:</strong> Collision detection is implemented for interactions between the player, the ball, and obstacles/enemies. Engaging explosion effects accompany collisions, enhancing the gaming experience.
 # Video
-On maintenance
+[![Basketball-Showdown-Hoops-and-Hazards](https://img.youtube.com/vi/qOyfsIhWz4g/0.jpg)](https://www.youtube.com/watch?v=qOyfsIhWz4g)
 # Design Implementation
 ## Game Flow
 This is a 2-dimensional game that requires the user to score points up to 15 
